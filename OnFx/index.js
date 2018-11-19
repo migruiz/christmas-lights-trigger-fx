@@ -12,6 +12,7 @@ exports.lightson = (req, res) => {
     client.on('connect', function () {
       console.log('entered');
         client.publish(process.env.turnOnLightsTopic, 'LightsOn');
+        client.end();
         res.status(200);
     })
   };
