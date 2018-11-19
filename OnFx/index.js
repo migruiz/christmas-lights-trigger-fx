@@ -1,6 +1,18 @@
-
-var mqtt = require('mqtt')
-var client  = mqtt.connect(global.mtqqURL) 
-client.on('connect', function () {
-    client.publish(global.turnOnLightsTopic, 'LightsOn')
-})
+/**
+ * Responds to any HTTP request.
+ *
+ * @param {!express:Request} req HTTP request context.
+ * @param {!express:Response} res HTTP response context.
+ */
+exports.lightson = (req, res) => {
+    var mqtt = require('mqtt');
+    var client  = mqtt.connect(process.env.mtqqURL);
+  	console.log(process.env.mtqqURL);
+  	console.log(process.env.turnOnLightsTopic);
+    client.on('connect', function () {
+      console.log('entered');
+        client.publish(process.env.turnOnLightsTopic, 'LightsOn');
+        res.status(200);
+    })
+  };
+  
