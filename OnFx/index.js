@@ -14,6 +14,7 @@ exports.lightson = (req, res) => {
         client.publish(process.env.turnOnLightsTopic, 'LightsOn');
         client.end();
         res.status(200);
+        res.end();
     })
   };
   

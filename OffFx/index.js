@@ -13,6 +13,7 @@ exports.lightsoff = (req, res) => {
       console.log('entered');
         client.publish(process.env.turnOffLightsTopic, 'LightsOff');
       	client.end();  
-      	res.status(200).send('');
+        res.status(200).send('');
+        res.end();
     })
   };
